@@ -16,11 +16,17 @@ function SearchBar() {
     const sortByOption = event.target.textContent;
     setSortBy(sortingOptions[sortByOption]);
   }
+
+  const handleSearchTerm = (event) => {
+    setSearchTerm(event.target.value);
+  }
+
+  const handleLocation = (event) => {
+    setLocation(event.target.value);
+  }
   return (
     <div>
       <div className="SearchBar-sort-options">
-      {sortBy}
-
         <ul>
           {
             Object.keys(sortingOptions).map(sortingOption => {
@@ -38,8 +44,8 @@ function SearchBar() {
           }
         </ul>
       </div>
-      <input placeholder="Search Businesses" type="text" />
-      <input placeholder="Where?" type="text" />
+      <input onChange={handleSearchTerm} placeholder="Search Businesses" type="text" />
+      <input onChange={handleLocation} placeholder="Where?" type="text" />
       <button>Let's Go</button>
     </div>
   )
