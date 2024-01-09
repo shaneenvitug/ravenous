@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SearchBar() {
   const sortingOptions = {
@@ -6,6 +6,10 @@ function SearchBar() {
     "Highest Rated": "rating",
     "Most Reviewed": "review_count"
   }
+
+  const [ searchTerm, setSearchTerm ] = useState("");
+  const [ location, setLocation ] = useState("");
+  const [ sortBy, setSortBy ] = useState("best_match");
   return (
     <div>
       <div className="SearchBar-sort-options">
