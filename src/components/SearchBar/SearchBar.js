@@ -24,6 +24,10 @@ function SearchBar() {
   const handleLocation = (event) => {
     setLocation(event.target.value);
   }
+
+  const onButtonClick = () => {
+    console.log(`Searching Yelp with ${searchTerm}, ${location}, ${sortBy}`);
+  }
   return (
     <div>
       <div className="SearchBar-sort-options">
@@ -46,7 +50,7 @@ function SearchBar() {
       </div>
       <input onChange={handleSearchTerm} placeholder="Search Businesses" type="text" />
       <input onChange={handleLocation} placeholder="Where?" type="text" />
-      <button>Let's Go</button>
+      <button onClick={onButtonClick}>Let's Go</button>
     </div>
   )
 
