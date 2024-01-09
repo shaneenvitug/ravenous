@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SearchBar.css";
 
 function SearchBar() {
   const sortingOptions = {
@@ -10,14 +11,29 @@ function SearchBar() {
   const [ searchTerm, setSearchTerm ] = useState("");
   const [ location, setLocation ] = useState("");
   const [ sortBy, setSortBy ] = useState("best_match");
+
+  const onClickSortByOption = (event) => {
+    const sortByOption = event.target.textContent;
+    setSortBy(sortingOptions[sortByOption]);
+  }
   return (
     <div>
       <div className="SearchBar-sort-options">
+      {sortBy}
+
         <ul>
           {
             Object.keys(sortingOptions).map(sortingOption => {
               let sortOptionValue = sortingOptions[sortingOption];
-              return <li key={sortOptionValue}>{sortingOption}</li>
+              return (
+                <li 
+                  onClick={onClickSortByOption}
+                  className={`SearchBar-list ${sortBy === sortOptionValue ? "active" : ""}`}
+                  key={sortOptionValue}
+                >
+                  {sortingOption}
+                </li>
+              )
             })
           }
         </ul>

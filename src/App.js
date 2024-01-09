@@ -1,6 +1,6 @@
 import './App.css';
 import BusinessList from './components/BusinessList';
-import SearchBar from './components/SearchBar';
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   const businesses = [
