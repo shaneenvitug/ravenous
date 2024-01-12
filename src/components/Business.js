@@ -4,16 +4,22 @@ function Business(props) {
   
   return (
     <div>
-      <img src={props.business.imageSrc} alt={props.business.name} />
+      <img src={props.business.image_url} alt={props.business.name} />
       <h2>{props.business.name}</h2>
       <div>
-        <div>{props.business.address}</div>
-        <div>{props.business.city}</div>
-        <div>{props.business.state} {props.business.zipCode}</div>
+        <div>{props.business.location.address1}</div>
+        <div>{props.business.location.city}</div>
+        <div>{props.business.location.state} {props.business.location.zip_code}</div>
       </div>
-      <div>{props.business.category}</div>
+      <div>
+        {
+          props.business.categories.map(category => {
+            return <span key={category.alias}>{category.title}</span>
+        })
+        }
+      </div>
       <div>{props.business.rating} stars</div>
-      <div>{props.business.reviewCount} reviews</div>
+      <div>{props.business.review_count} reviews</div>
     </div>
   )
 }

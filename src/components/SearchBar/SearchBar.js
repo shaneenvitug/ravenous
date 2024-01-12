@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SearchBar.css";
 import { search } from "../../utils/api";
 
-function SearchBar() {
+function SearchBar({ updateBusinesses }) {
   const sortingOptions = {
     "Best Match": "best_match",
     "Highest Rated": "rating",
@@ -26,8 +26,13 @@ function SearchBar() {
     setLocation(event.target.value);
   }
 
-  const onButtonClick = () => {
-    search(searchTerm, location, sortBy);
+  const onButtonClick = async () => {
+    try {
+      const result = await search(searchTerm, location, sortBy);
+      updateBusinesses(result.businesses);
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div>
