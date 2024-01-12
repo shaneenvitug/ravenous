@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
+import { search } from "../../utils/api";
 
 function SearchBar() {
   const sortingOptions = {
@@ -26,7 +27,7 @@ function SearchBar() {
   }
 
   const onButtonClick = () => {
-    console.log(`Searching Yelp with ${searchTerm}, ${location}, ${sortBy}`);
+    search(searchTerm, location, sortBy);
   }
   return (
     <div>

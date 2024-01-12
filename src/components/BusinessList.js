@@ -6,7 +6,7 @@ function BusinessList(props) {
     <div className="BusinessList">
     {
       props.businesses.map(business => {
-        return <Business business={business} />
+        return <Business key={business.id} business={business} />
       })
     }
     </div>
